@@ -1,9 +1,9 @@
-# NT532 - Công nghệ Internet of Things hiện đại
+# NT532 — Công nghệ Internet of Things hiện đại
 
 *An English version will be added soon!*
 
 ## Về repo này
-Đây là repo ghi lại quá trình thực hành của mình đối với môn học **Công nghệ Internet of Things hiện đại** mà mình học tại trường vào HK1 năm học 2026-2027 (09/2026 - 12/2026). Mình sẽ cập nhật nội dung thực hiện các bài lab của mình thường xuyên theo đúng tiến độ môn học. 
+Đây là repo ghi lại quá trình thực hành của mình đối với môn **Công nghệ Internet of Things hiện đại** mà mình đã học vào HK1 năm học 2026-2027 (09/2026 - 12/2026). Mình sẽ cập nhật nội dung thực hiện các bài lab của mình thường xuyên theo đúng tiến độ môn học.  
 
 ---
 
