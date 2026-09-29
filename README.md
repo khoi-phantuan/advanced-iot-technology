@@ -9,8 +9,13 @@
 
 ## Danh sách lab
 - [ ] [Lab 1 — Giới thiệu về Arduino](Lab_1/) *(đang tiến hành)*
+- [ ] [Lab 2 — Arduino và cảm biến](Lab_2/)
+- [ ] [Lab 3 — HTTP/MQTT trong nền tảng IoT](Lab_3/)
+- [ ] [Lab 4 — Xây dựng một dashboard IoT đơn giản](Lab_4/)
+- [ ] [Lab 5 — Xây dựng một ứng dụng AI trong nền tảng IoT](Lab_5/)
+- [ ] [Lab 6 — Hoàn thành một giải pháp IoT](Lab_6/)
 
-*các lab khác sẽ được cập nhật theo thời gian...*
+*nội dung các lab sau sẽ được cập nhật theo thời gian...*
 
 ---
 
