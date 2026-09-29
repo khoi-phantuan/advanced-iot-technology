@@ -11,7 +11,8 @@ int direction_button = 6; // chân digital 6 điều khiển nút bấm thay đ�
 int value = 0; // giá trị đang đếm tới
 bool last_counter = 0; // biến lưu trạng thái có/không của việc nút counter bị bấm ở lần loop trước
 bool last_direction = 0; // biến lưu trạng thái có/không của việc nút direction bị bấm ở lần loop trước
-// bởi vì trong khoảnh khắc chỉ 0.1 giây khi ta nhấn nút, hàng ngàn lần lặp của chương trình đã diễn ra !
+// bởi vì trong khoảnh khắc chỉ 0.1 giây khi ta nhấn nút, hàng ngàn lần lặp của chương trình đã diễn ra 
+// -> Chỉ bấm nút 1 lần và thả tay nhưng vì các vòng lặp chạy liên tục quá nhanh, giá trị đếm sẽ tăng vọt (hoặc giảm liên tiếp) trong thời gian ngắn !
 
 void setup() {
   // các chân này sẽ xuất điện áp mức cao/mức thấp để điều khiển trạng thái sáng/tắt của đèn LED tương ứng
@@ -26,6 +27,13 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  bool new_counter = digitalRead(counter_button); // biến lưu trạng thái nhấn nút counter ở lần lặp này
+  bool new_direction = digitalRead(direction_button); // biến lưu trạng thái nhấn nút direction ở lần lặp này
+
+  if (direction_counter && !direction_counter) // nếu trạng thái của nút counter ở lần lặp trước là "KHÔNG NHẤN" nhưng ở lần lặp này là "ĐƯỢC NHẤN"
+  // (đồng nghĩa với việc đây là vòng lặp xuất hiện đầu tiên kể từ khi đọc được trạng thái của nút là "ĐƯỢC NHẤN")
+  {
+    direction != direction; // đảo chiều đếm
+  }
 
 }
