@@ -11,11 +11,18 @@ int direction_button = 6; // chân digital 6 điều khiển nút bấm thay đ�
 int value = 0; // giá trị đang đếm tới
 bool last_counter = 0; // biến lưu trạng thái có/không của việc nút counter bị bấm ở lần loop trước
 bool last_direction = 0; // biến lưu trạng thái có/không của việc nút direction bị bấm ở lần loop trước
-// bởi vì trong khoảnh khắc chỉ 0.1 giây khi ta nhấn nút, hàng ngàn lần lặp của chương trình đã diễn ra !s
+// bởi vì trong khoảnh khắc chỉ 0.1 giây khi ta nhấn nút, hàng ngàn lần lặp của chương trình đã diễn ra !
 
 void setup() {
-  // put your setup code here, to run once:
+  // các chân này sẽ xuất điện áp mức cao/mức thấp để điều khiển trạng thái sáng/tắt của đèn LED tương ứng
+  pinMode(LED_3, OUTPUT);
+  pinMode(LED_2, OUTPUT);
+  pinMode(LED_1, OUTPUT);
+  pinMode(LED_0, OUTPUT);
 
+  // các chân này sẽ đọc trạng thái điện áp (cao/thấp) tại các nút bấm để biết nó có vừa được người dùng bấm không (nếu có bấm thì điện áp đọc được sẽ ở mức cao)
+  pinMode(counter_button, INPUT);
+  pinMode(direction_button, INPUT);
 }
 
 void loop() {
