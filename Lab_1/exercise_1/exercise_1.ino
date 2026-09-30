@@ -51,6 +51,22 @@ void led_on()
   digitalWrite(LED_0, (value >> 3) | 1);
 }
 
+// in log ra màn hình Serial Monitor theo yêu cầu
+void print_log()
+{
+    Serial.print("Current value: ");
+    print_binary_value(); // in giá trị nhị phân của value
+    
+    Serial.print(" - Decimal: ");
+    Serial.print(value); // in giá trị thập phân của value
+
+    // in chiều đếm hiện tại của chương trình
+    if (direction)
+      Serial.println(" - Direction: UP");
+    else
+      Serial.println(" - Direction: DOWN");
+}
+
 void loop() {
   bool new_counter = digitalRead(counter_button); // biến lưu trạng thái của việc "nút counter có bị bấm hay không?" ở lần loop này
   bool new_direction = digitalRead(direction_button); // biến lưu trạng thái của việc "nút direction có bị bấm hay không?" ở lần loop này
@@ -73,20 +89,9 @@ void loop() {
     if (value > 15) // khi value hơn max, đưa về 0 theo yêu cầu
       value = 0;
 
-    led_on(); // điều chỉnh các đèn LED theo trạng thái tương ứng của value
+    led_on();
 
-    // in log ra màn hình Serial Monitor theo yêu cầu
-    Serial.print("Current value: ");
-    print_binary_value(); // in giá trị nhị phân của value
-    
-    Serial.print(" - Decimal: ");
-    Serial.print(value); // in giá trị thập phân của value
-
-    // in chiều đếm hiện tại của chương trình
-    if (direction)
-      Serial.println(" - Direction: UP");
-    else
-      Serial.println(" - Direction: DOWN");
+    print_log();
   }
 
   last_counter = new_counter; // cập nhật trạng thái mới nhất của việc "nút counter có bị bấm hay không?" theo trạng thái đã ghi nhận trong lần lặp này
