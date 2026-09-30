@@ -44,6 +44,8 @@ void setup() {
   pinMode(LED_G, OUTPUT);
 
   pinMode(BUTTON, INPUT);
+
+  Serial.begin(115200);
 }
 
 void loop() {
