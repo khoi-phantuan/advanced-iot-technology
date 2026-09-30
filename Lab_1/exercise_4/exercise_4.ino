@@ -198,5 +198,6 @@ void loop() {
     process_pressing_button();
   }
 
+  last_button = current_button // cập nhật trạng thái nhấn nút hiện tại thành trạng thái nhấn nút mới nhất
   }
 }
