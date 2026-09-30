@@ -61,6 +61,9 @@ void loop() {
     else
       value--;
 
+    if (value == 15) // khi value chạm max, đưa về 0 theo yêu cầu
+      value = 0;
+
     // in log ra màn hình Serial Monitor theo yêu cầu
     Serial.print("Current value: ");
     print_binary_value(); // in giá trị nhị phân của value
@@ -74,9 +77,6 @@ void loop() {
     else
       Serial.println(" - Direction: DOWN");
   }
-
-  if (value == 15 || value == 0)
-    direction = !direction;
 
   last_counter = new_counter; // cập nhật trạng thái mới nhất của việc "nút counter có bị bấm hay không?" theo trạng thái đã ghi nhận trong lần lặp này
   last_direction = new_direction; // cập nhật trạng thái mới nhất của việc "nút counter có bị bấm hay không?" theo trạng thái đã ghi nhận trong lần lặp này
