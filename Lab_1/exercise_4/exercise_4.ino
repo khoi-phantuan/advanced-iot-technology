@@ -8,13 +8,16 @@ short LED_F = 8;  // chân D8 điều khiển đoạn LED F
 short LED_G = 7;  // chân D7 điều khiển đoạn LED G
 
 short BUTTON = 2; // khai báo biến ứng với chân D2 nhận thông tin từ nút bấm
+bool last_button = false; // biến lưu trạng thái của việc "nút có được chương trình nhận diện là "ĐƯỢC NHẤN" hay không" trong vòng lặp trước (true -> có ; false -> không)
 
+// struct lưu thông tin sinh viên, gồm tên và mã số
 struct SinhVien
 {
   char* HoTen;
   char* MSSV;
 };
 
+// mảng sinh viên, gồm 3 sinh viên của nhóm cần hiển thị mã số lên LED 7 đoạn
 SinhVien sv_arr[3] = {
   {"Phan Tuan Khoi", "24520867"},
   {"Nguyen Huynh Dang Khoa", "24520829"},
