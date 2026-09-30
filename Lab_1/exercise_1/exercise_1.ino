@@ -16,6 +16,8 @@ bool last_direction = 0; // biến lưu trạng thái của việc "nút directi
 // bởi vì trong khoảnh khắc (dù chỉ 0.1 giây) khi ta nhấn nút, hàng ngàn vòng lặp rất nhanh của chương trình đã chạy
 // -> Chỉ bấm nút trong một khoảnh khắc rất ngắn, nhưng vì các vòng lặp chạy liên tục quá nhanh, chương trình sẽ hiểu là "nút được bấm liên tục" và tăng/giảm value không phanh !
 
+#define MSB 3 // index của bit có trọng số lớn nhất trong chuỗi bit cần thao tác
+
 void setup() {
   // các chân này sẽ xuất điện áp mức cao/mức thấp để điều khiển trạng thái sáng/tắt của đèn LED tương ứng
   pinMode(LED_3, OUTPUT);
@@ -26,6 +28,18 @@ void setup() {
   // các chân này sẽ đọc trạng thái điện áp (cao/thấp) tại các nút bấm để biết nó có vừa được người dùng bấm không (có: mức cao ; không: mức thấp)
   pinMode(counter_button, INPUT);
   pinMode(direction_button, INPUT);
+}
+
+// sử dụng phép toán dịch bit để in từng bit của dãy bit ra màn hình (theo thứ tự từ MSB đến LSB)
+void print_binary_value()
+{
+  int i = MSB;
+  while (i >= 0)
+  {
+    Serial.print((value >> i) | 1);
+
+    i--;
+  }
 }
 
 void loop() {
@@ -47,15 +61,18 @@ void loop() {
     else
       value--;
 
+    // in log ra màn hình Serial Monitor theo yêu cầu
     Serial.print("Current value: ");
-    Serial.print(value, BIN);
-    Serial.print("(");
-    Serial.print(value, DEC);
-    Serial.print(") - Current counting direction: ");
+    print_binary_value(); // in giá trị nhị phân của value
+    
+    Serial.print(" - Decimal: ");
+    Serial.print(value); // in giá trị thập phân của value
+
+    // in chiều đếm hiện tại của chương trình
     if (direction)
-      Serial.println("UP");
+      Serial.println(" - Direction: UP");
     else
-      Serial.println("DOWN");
+      Serial.println(" - Direction: DOWN");
   }
 
   if (value == 15 || value == 0)
