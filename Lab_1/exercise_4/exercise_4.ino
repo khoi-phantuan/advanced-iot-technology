@@ -35,8 +35,15 @@ char *ID = NULL; // con trỏ trỏ đến các ký tự trong chuỗi ký tự 
 #define BREAK_TIME 150 // thời gian giãn cách giữa 2 lần hiển thị liên tiếp (cả chữ số - chữ số và chữ số - dấu gạch ngang)
 
 void setup() {
-  
+  pinMode(LED_A, OUTPUT);
+  pinMode(LED_B, OUTPUT);
+  pinMode(LED_C, OUTPUT);
+  pinMode(LED_D, OUTPUT);
+  pinMode(LED_E, OUTPUT);
+  pinMode(LED_F, OUTPUT);
+  pinMode(LED_G, OUTPUT);
 
+  pinMode(BUTTON, INPUT);
 }
 
 void loop() {
