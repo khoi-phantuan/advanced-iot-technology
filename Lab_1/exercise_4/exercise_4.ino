@@ -49,13 +49,136 @@ void setup() {
   Serial.begin(115200);
 }
 
+// bật/tắt các đoạn LED tương ứng để hiển thị các chữ số và dấu gạch ngang
+void display_on_led(bool state)
+{
+  switch(*ID)
+  {
+    case '0':
+    {
+      digitalWrite(LED_A, state);
+      digitalWrite(LED_B, state);
+      digitalWrite(LED_C, state);
+      digitalWrite(LED_D, state);
+      digitalWrite(LED_E, state);
+      digitalWrite(LED_F, state);
+
+      break;
+    }
+
+    case '1':
+    {
+      digitalWrite(LED_B, state);
+      digitalWrite(LED_C, state);
+
+      break;
+    }
+
+    case '2':
+    {
+      digitalWrite(LED_A, state);
+      digitalWrite(LED_B, state);
+      digitalWrite(LED_D, state);
+      digitalWrite(LED_E, state);
+      digitalWrite(LED_G, state);
+
+      break;
+    }
+
+    case '3':
+    {
+      digitalWrite(LED_A, state);
+      digitalWrite(LED_B, state);
+      digitalWrite(LED_C, state);
+      digitalWrite(LED_D, state);
+      digitalWrite(LED_G, state);
+
+      break;
+    }
+
+    case '4':
+    {
+      digitalWrite(LED_B, state);
+      digitalWrite(LED_C, state);
+      digitalWrite(LED_F, state);
+      digitalWrite(LED_G, state);
+
+      break;
+    }
+
+    case '5':
+    {
+      digitalWrite(LED_A, state);
+      digitalWrite(LED_C, state);
+      digitalWrite(LED_D, state);
+      digitalWrite(LED_F, state);
+      digitalWrite(LED_G, state);
+
+      break;
+    }
+
+    case '6':
+    {
+      digitalWrite(LED_A, state);
+      digitalWrite(LED_C, state);
+      digitalWrite(LED_D, state);
+      digitalWrite(LED_E, state);
+      digitalWrite(LED_F, state);
+      digitalWrite(LED_G, state);
+
+      break;
+    }
+
+    case '7':
+    {
+      digitalWrite(LED_A, state);
+      digitalWrite(LED_B, state);
+      digitalWrite(LED_C, state);
+
+      break;
+    }
+
+    case '8':
+    {
+      digitalWrite(LED_A, state);
+      digitalWrite(LED_B, state);
+      digitalWrite(LED_C, state);
+      digitalWrite(LED_D, state);
+      digitalWrite(LED_E, state);
+      digitalWrite(LED_F, state);
+      digitalWrite(LED_G, state);
+
+      break;
+    }
+
+    case '9':
+    {
+      digitalWrite(LED_A, state);
+      digitalWrite(LED_B, state);
+      digitalWrite(LED_C, state);
+      digitalWrite(LED_D, state);
+      digitalWrite(LED_F, state);
+      digitalWrite(LED_G, state);
+
+      break;
+    }
+
+    default:
+    {
+      digitalWrite(LED_G, state);
+
+      break;
+    }
+  }
+}
+
 // hàm xử lý sự kiện nhấn nút
 void process_pressing_button()
 {
   index = (index + 1) % 3; // chuyển sang sinh viên kế tiếp
   ID = sv_arr[index].MSSV; // ID bây giờ trỏ tới ký tự đầu tiên (chữ số đầu tiên) trong chuỗi số thuộc MSSV của sinh viên đang xét
 
-  
+  display_on_led(1);
 }
 
 void loop() {
