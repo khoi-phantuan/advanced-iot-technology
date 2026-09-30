@@ -71,22 +71,58 @@ void print_log()
       Serial.println(" - Direction: DOWN");
 }
 
+int start_checking_bounce_direction = 0;
+int start_checking_bounce_counter = 0;
+
 void loop() {
   bool new_counter = digitalRead(counter_button); // biến lưu trạng thái của việc "nút counter có bị bấm hay không?" ở lần loop này
   bool new_direction = digitalRead(direction_button); // biến lưu trạng thái của việc "nút direction có bị bấm hay không?" ở lần loop này
 
-  if (new_direction && !last_direction) // nếu trạng thái của nút direction ở lần loop trước là "KHÔNG NHẤN" nhưng ở lần lặp này là "ĐƯỢC NHẤN"...
-  // (đồng nghĩa với việc đây là vòng lặp đầu tiên chạy kể từ khi chương trình đọc được trạng thái của nút direction là "ĐƯỢC NHẤN"...)
+  if (new_direction && !last_direction) // ngay khi trạng thái của nút direction chuyển từ "KHÔNG NHẤN" sang "ĐƯỢC NHẤN"... (chưa cần biết do nhiễu hay do người bấm thật)
   {
+    start_checking_bounce_direction = millis(); // ghi lại thời điểm đó ngay
+  }
+
+  /*
+  Ba điều kiện của khối if bên dưới tương ứng với các ràng buộc sau:
+  1. Trước khi xử lý bất cứ thứ gì, phải chờ X ms (ở đây dùng 50) để tín hiệu đọc được tại nút direction được ổn định
+  2. Sau khoảng thời gian chờ trên, trạng thái của nút direction vẫn phải còn đang là "ĐƯỢC NHẤN"
+  3. Đây là loop đầu tiên mà 2 điều kiện bên trên được thỏa 
+  
+  Giải thích thêm cho ý 3:
+  - 'start_checking_bounce_direction' đóng vai trò như một flag. Giá trị của nó (bằng hoặc khác 0) sẽ quyết định chương trình có cần xử lý tín hiệu
+  "ĐƯỢC NHẤN" của nút direction trong loop hiện tại hay không.
+  - Vì sao lại như vậy? Vì mặc định là biến này sẽ bằng 0. Nó sẽ được set thành một giá trị khác 0 KHI VÀ CHỈ KHI chương trình đọc được sự thay đổi 
+  trạng thái của nút direction từ "KHÔNG NHẤN" sang "ĐƯỢC NHẤN".
+  - Khi mà cả 2 điều kiện đầu của khối if bên dưới được thỏa, cái ta cần kiểm tra là: tín hiệu "ĐƯỢC NHẤN" lần này đã được xử lý hay chưa ? Nếu rồi, 
+  giá trị của flag sẽ bằng 0. Nếu chưa, giá trị của flag sẽ khác 0.
+  - Vì sao lại như vậy? Vì biến này sẽ được set về lại 0 KHI VÀ CHỈ KHI chương trình đi vào được khối if bên dưới và thực thi được các lệnh bên trong 
+  đó. Và ngay trong cái loop đầu tiên chạy kể từ khi 2 điều kiện đầu được thỏa, ta đã set ngay flag này về lại 0 rồi. Từ đó, những loop chạy sau đó 
+  dù vẫn đọc được tín hiệu nút direction là "ĐƯỢC NHẤN" cũng không thể thực thi được khối if này.
+  - Vì như đã nói ở trên, trong khoảnh khắc ta nhấn nút thì chương trình đã chạy qua hàng ngàn vòng lặp. Rất có thể, những loop chạy sau đó 
+  vẫn đọc được tín hiệu là "ĐƯỢC NHẤN" chỉ vì ta chưa thả tay (đó không phải là một lần bấm nút mới thực sự) -> Không xử lý.
+  */
+
+  if ((millis() - start_checking_bounce_direction >= 50) && new_direction && start_checking_bounce_direction != 0)
+  {
+    start_checking_bounce_direction = 0;
+    
     direction = !direction; // lập tức đảo chiều đếm
 
     Serial.print("Counting direction changed to: ");
-    Serial.println(direction ? "UP" : "DOWN");
+    Serial.println(direction ? "UP" : "DOWN"); // in log chiều đếm mới sau khi được đảo
   }
 
-  if (new_counter && !last_counter) // nếu trạng thái của nút counter ở lần loop trước là "KHÔNG NHẤN" nhưng ở lần lặp này là "ĐƯỢC NHẤN"...
-  // (đồng nghĩa với việc đây là vòng lặp đầu tiên chạy kể từ khi chương trình đọc được trạng thái của nút counter là "ĐƯỢC NHẤN"...)
+  // áp dụng tư duy xử lý tương tự lên nút counter
+  if (new_counter && !last_counter)
   {
+    start_checking_bounce_counter = millis();
+  }
+
+  if ((millis() - start_checking_bounce_counter >= 50) && new_direction && start_checking_bounce_counter != 0)
+  {
+    start_checking_bounce_counter = 0;
+    
     // đếm lên/đếm xuống theo chiều đếm hiện tại
     if (direction)
       value++;
