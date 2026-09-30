@@ -24,12 +24,17 @@ SinhVien sv_arr[3] = {
   {"Huynh Mai Phong", "25521379"}
 };
 
+// định nghĩa các khoảng thời gian sẽ dùng để so sánh trong chương trình
+#define DISPLAY_NUMBER_TIME 600 // thời gian hiển thị một chữ số
+#define DISPLAY_HYPHEN_TIME 1000 // thời gian hiển thị dấu gạch ngang
+#define BREAK_TIME 150 // thời gian giãn cách giữa 2 lần hiển thị liên tiếp (cả chữ số - chữ số và chữ số - dấu gạch ngang)
+
 void setup() {
-  // put your setup code here, to run once:
+  
 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  
 
 }
