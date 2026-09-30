@@ -71,8 +71,8 @@ void print_log()
       Serial.println(" - Direction: DOWN");
 }
 
-int start_checking_bounce_direction = 0;
-int start_checking_bounce_counter = 0;
+unsigned long start_checking_bounce_direction = 0;
+unsigned long start_checking_bounce_counter = 0;
 
 void loop() {
   bool new_counter = digitalRead(counter_button); // biến lưu trạng thái của việc "nút counter có bị bấm hay không?" ở lần loop này
@@ -85,7 +85,7 @@ void loop() {
 
   /*
   Ba điều kiện của khối if bên dưới tương ứng với các ràng buộc sau:
-  1. Trước khi xử lý bất cứ thứ gì, phải chờ X ms (ở đây dùng 50) để tín hiệu đọc được tại nút direction được ổn định
+  1. Trước khi xử lý bất cứ thứ gì, phải chờ X ms (ở đây dùng 30) để tín hiệu đọc được tại nút direction được ổn định
   2. Sau khoảng thời gian chờ trên, trạng thái của nút direction vẫn phải còn đang là "ĐƯỢC NHẤN"
   3. Đây là loop đầu tiên mà 2 điều kiện bên trên được thỏa 
   
