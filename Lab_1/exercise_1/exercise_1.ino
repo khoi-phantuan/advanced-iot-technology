@@ -79,6 +79,9 @@ void loop() {
   // (đồng nghĩa với việc đây là vòng lặp đầu tiên chạy kể từ khi chương trình đọc được trạng thái của nút direction là "ĐƯỢC NHẤN"...)
   {
     direction = !direction; // lập tức đảo chiều đếm
+
+    Serial.print("Counting direction changed to: ");
+    Serial.print(direction ? "UP", "DOWN");
   }
 
   if (new_counter && !last_counter) // nếu trạng thái của nút counter ở lần loop trước là "KHÔNG NHẤN" nhưng ở lần lặp này là "ĐƯỢC NHẤN"...
