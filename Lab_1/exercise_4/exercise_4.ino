@@ -9,6 +9,7 @@ short LED_G = 7;  // chân D7 điều khiển đoạn LED G
 
 short BUTTON = 2; // khai báo biến ứng với chân D2 nhận thông tin từ nút bấm
 bool last_button = false; // biến lưu trạng thái của việc "nút có được chương trình nhận diện là "ĐƯỢC NHẤN" hay không" trong vòng lặp trước (true -> có ; false -> không)
+unsigned long start_timing_button_bounce = 0;
 
 // struct lưu thông tin sinh viên, gồm tên và mã số
 struct SinhVien
@@ -49,6 +50,20 @@ void setup() {
 }
 
 void loop() {
-  
+  bool current_button = digitalRead(BUTTON); // biến lưu trạng thái của việc "nút có được chương trình nhận diện là "ĐƯỢC NHẤN" hay không" trong vòng lặp này
 
+  if (current_button && !last_button) // ngay ở vòng lặp đầu tiên chương trình nhận diện được: nút từ trạng thái "KHÔNG NHẤN" chuyển sang "ĐƯỢC NHẤN"...
+  {
+    start_timing_button_bounce = millis(); // ghi lại mốc thời gian đó ngay
+  }
+
+  // nếu đã trôi qua 30ms kể từ mốc thời gian đó mà nút vẫn còn được nhấn...
+  if ((millis() - start_timing_button_bounce >= 30) && current_button && (start_timing_button != 0))
+  {
+    start_timing_button_bounce = 0;
+    
+    // tiến hành xử lý lần nhấn nút này
+  }
+
+  }
 }
