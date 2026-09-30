@@ -25,7 +25,7 @@ SinhVien sv_arr[3] = {
   {"Huynh Mai Phong", "25521379"}
 };
 
-short index = -1; // chỉ số của sinh viên đang được hiển thị mã số, giá trị từ 0 đến 2 (ban đầu chưa ai nhấn nút - chưa có SV nào để hiển thị mã số thì bằng -1)
+short sv_index = -1; // chỉ số của sinh viên đang được hiển thị mã số, giá trị từ 0 đến 2 (ban đầu chưa ai nhấn nút - chưa có SV nào để hiển thị mã số thì bằng -1)
 bool next_num = false; // biến cho biết: đã đến lúc chuyển sang hiển thị số tiếp theo trong dãy mã số hiện tại chưa ?
 
 char *ID = NULL; // con trỏ trỏ đến các ký tự trong chuỗi ký tự mã số sinh viên (gồm 8 chữ số và 1 ký tự kết thúc - '\0')
@@ -176,17 +176,29 @@ unsigned long start_timing_display_number = 0; // lưu thời gian chương trì
 unsigned long start_timing_display_hyphen = 0; // lưu thời gian chương trình đã chạy ngay khi bắt đầu hiển thị dấu gạch ngang trên LED
 unsigned long start_timing_break = 0; // lưu thời gian chương trình đã chạy ngay khi bắt đầu khoảng thời gian nghỉ
 
+void print_log()
+{
+  Serial.print("Currently displaying ID of: ");
+  Serial.print(sv_arr[sv_index].HoTen);
+  Serial.print(" - ");
+  Serial.println(sv_arr[sv_index].MSSV);
+}
+
 // hàm xử lý sự kiện nhấn nút
 void process_pressing_button()
 {
-  display_on_led(0);
+  if (sv_index >= 0)
+    display_on_led(0);
+
   start_timing_display_number = 0;
   start_timing_display_hyphen = 0;
 
   start_timing_break = millis();
   
-  index = (index + 1) % 3; // chuyển sang sinh viên kế tiếp
-  ID = sv_arr[index].MSSV; // ID bây giờ trỏ tới ký tự đầu tiên (chữ số đầu tiên) trong chuỗi số thuộc MSSV của sinh viên đang xét
+  sv_index = (sv_index + 1) % 3; // chuyển sang sinh viên kế tiếp
+  ID = sv_arr[sv_index].MSSV; // ID bây giờ trỏ tới ký tự đầu tiên (chữ số đầu tiên) trong chuỗi số thuộc MSSV của sinh viên đang xét
+
+  print_log();
 }
 
 void loop() {
@@ -232,7 +244,7 @@ void loop() {
     display_on_led(0);
 
     start_timing_break = millis();
-    ID = sv_arr[index].MSSV;
+    ID = sv_arr[sv_index].MSSV;
   }
 
   last_button = current_button; // cập nhật trạng thái nhấn nút hiện tại thành trạng thái nhấn nút mới nhất
