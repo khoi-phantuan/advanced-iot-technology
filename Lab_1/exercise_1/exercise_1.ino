@@ -47,4 +47,7 @@ void loop() {
       value--;
   }
 
+  if (value == 15 || value == 0)
+    direction = !direction;
+
 }
