@@ -81,7 +81,7 @@ void loop() {
     direction = !direction; // lập tức đảo chiều đếm
 
     Serial.print("Counting direction changed to: ");
-    Serial.print(direction ? "UP" : "DOWN");
+    Serial.println(direction ? "UP" : "DOWN");
   }
 
   if (new_counter && !last_counter) // nếu trạng thái của nút counter ở lần loop trước là "KHÔNG NHẤN" nhưng ở lần lặp này là "ĐƯỢC NHẤN"...
@@ -92,7 +92,7 @@ void loop() {
       value++;
     else
     {
-      if (value != 0)
+      if (value != 0) // chỉ tiếp tục đếm xuống khi value đang khác 0 (tránh đếm xuống số âm làm hỏng logic bật đèn)
         value--;
     }
 
