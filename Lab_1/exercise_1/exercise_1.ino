@@ -45,6 +45,16 @@ void loop() {
       value++;
     else
       value--;
+
+    Serial.print("Current value: ");
+    Serial.print(value, BIN);
+    Serial.print("(");
+    Serial.print(value, DEC);
+    Serial.print(") - Current counting direction: ");
+    if (direction)
+      Serial.println("UP");
+    else
+      Serial.println("DOWN");
   }
 
   if (value == 15 || value == 0)
