@@ -88,7 +88,10 @@ void loop() {
     if (direction)
       value++;
     else
-      value--;
+    {
+      if (value != 0)
+        value--;
+    }
 
     if (value > 15) // khi value hơn max, đưa về 0 theo yêu cầu
       value = 0;
