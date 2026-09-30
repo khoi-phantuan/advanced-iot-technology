@@ -60,4 +60,6 @@ void loop() {
   if (value == 15 || value == 0)
     direction = !direction;
 
+  last_counter = new_counter; // cập nhật lần gần nhất ghi nhận nút counter được bấm
+  last_direction = new_direction; // cập nhật lần gần nhất ghi nhận nút direction được bấm
 }
