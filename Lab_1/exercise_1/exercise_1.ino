@@ -38,7 +38,7 @@ void print_binary_value()
   int i = MSB;
   while (i >= 0)
   {
-    Serial.print((value >> i) | 1);
+    Serial.print((value >> i) & 1);
 
     i--;
   }
