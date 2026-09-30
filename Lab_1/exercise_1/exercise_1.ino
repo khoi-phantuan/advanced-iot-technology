@@ -61,7 +61,7 @@ void loop() {
     else
       value--;
 
-    if (value == 15) // khi value chạm max, đưa về 0 theo yêu cầu
+    if (value > 15) // khi value chạm max, đưa về 0 theo yêu cầu
       value = 0;
 
     // in log ra màn hình Serial Monitor theo yêu cầu
