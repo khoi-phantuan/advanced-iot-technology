@@ -49,6 +49,15 @@ void setup() {
   Serial.begin(115200);
 }
 
+// hàm xử lý sự kiện nhấn nút
+void process_pressing_button()
+{
+  index = (index + 1) % 3; // chuyển sang sinh viên kế tiếp
+  ID = sv_arr[index].MSSV; // ID bây giờ trỏ tới ký tự đầu tiên (chữ số đầu tiên) trong chuỗi số thuộc MSSV của sinh viên đang xét
+
+  
+}
+
 void loop() {
   bool current_button = digitalRead(BUTTON); // biến lưu trạng thái của việc "nút có được chương trình nhận diện là "ĐƯỢC NHẤN" hay không" trong vòng lặp này
 
@@ -63,6 +72,7 @@ void loop() {
     start_timing_button_bounce = 0;
     
     // tiến hành xử lý lần nhấn nút này
+    process_pressing_button();
   }
 
   }
