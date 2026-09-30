@@ -30,6 +30,8 @@ void setup() {
   pinMode(direction_button, INPUT);
 
   Serial.begin(115200); // bắt đầu giao tiếp serial ở tốc độ 115200 bit/s (để in log ra màn hình)
+
+  print_log();
 }
 
 // sử dụng phép toán dịch bit để in từng bit của dãy bit ra màn hình (theo thứ tự từ MSB đến LSB)
