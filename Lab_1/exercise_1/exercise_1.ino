@@ -96,13 +96,14 @@ void loop() {
   trạng thái của nút direction từ "KHÔNG NHẤN" sang "ĐƯỢC NHẤN".
   - Khi mà cả 2 điều kiện đầu của khối if bên dưới được thỏa, cái ta cần kiểm tra là: tín hiệu "ĐƯỢC NHẤN" lần này đã được xử lý hay chưa ? Nếu rồi, 
   giá trị của flag sẽ bằng 0. Nếu chưa, giá trị của flag sẽ khác 0.
-  - Vì sao lại như vậy? Vì biến này sẽ được set về lại 0 KHI VÀ CHỈ KHI chương trình đi vào được khối if bên dưới và thực thi được các lệnh bên trong 
-  đó. Và ngay trong cái loop đầu tiên chạy kể từ khi 2 điều kiện đầu được thỏa, ta đã set ngay flag này về lại 0 rồi. Từ đó, những loop chạy sau đó 
-  dù vẫn đọc được tín hiệu nút direction là "ĐƯỢC NHẤN" cũng không thể thực thi được khối if này.
+  - Vì sao lại như vậy? Vì trong trường hợp nút vẫn còn đang được nhấn sau 30ms (điều kiện 2), biến này sẽ được set về lại 0 KHI VÀ CHỈ KHI chương 
+  trình đi vào được khối if bên dưới và thực thi được các lệnh bên trong đó. Và ngay trong cái loop đầu tiên chạy kể từ khi 2 điều kiện đầu được 
+  thỏa, ta đã set ngay flag này về lại 0 rồi. Từ đó, những loop chạy sau đó dù vẫn đọc được tín hiệu nút direction là "ĐƯỢC NHẤN" cũng không thể 
+  thực thi được khối if này.
   - Vì như đã nói ở trên, trong khoảnh khắc ta nhấn nút thì chương trình đã chạy qua hàng ngàn vòng lặp. Rất có thể, những loop chạy sau đó 
   vẫn đọc được tín hiệu là "ĐƯỢC NHẤN" chỉ vì ta chưa thả tay (đó không phải là một lần bấm nút mới thực sự) -> Không xử lý.
 
-  Giải thuật này đòi hỏi người bấm cần giữ tay lâu một chút khi bấm nút (đừng nhấn-nhả quá nhanh trong dưới 30ms)
+  Giải thuật này đòi hỏi người bấm cần giữ tay lâu một chút khi bấm nút (đừng nhấn-nhả quá nhanh trong dưới 30ms).
   */
 
   if ((millis() - start_checking_bounce_direction >= 30) && new_direction && start_checking_bounce_direction != 0)
@@ -130,7 +131,7 @@ void loop() {
       value++;
     else
     {
-      if (value != 0) // chỉ tiếp tục đếm xuống khi value đang khác 0 (tránh đếm xuống số âm làm hỏng logic bật đèn)
+      if (value != 0) // chỉ đếm xuống khi value đang khác 0 (tránh đếm xuống số âm làm hỏng logic bật đèn)
         value--;
     }
 
@@ -143,5 +144,5 @@ void loop() {
   }
 
   last_counter = new_counter; // cập nhật trạng thái mới nhất của việc "nút counter có bị bấm hay không?" theo trạng thái đã ghi nhận trong lần lặp này
-  last_direction = new_direction; // cập nhật trạng thái mới nhất của việc "nút counter có bị bấm hay không?" theo trạng thái đã ghi nhận trong lần lặp này
+  last_direction = new_direction; // cập nhật trạng thái mới nhất của việc "nút direction có bị bấm hay không?" theo trạng thái đã ghi nhận trong lần lặp này
 }
