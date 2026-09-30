@@ -26,7 +26,6 @@ SinhVien sv_arr[3] = {
 };
 
 short sv_index = -1; // chỉ số của sinh viên đang được hiển thị mã số, giá trị từ 0 đến 2 (ban đầu chưa ai nhấn nút - chưa có SV nào để hiển thị mã số thì bằng -1)
-bool next_num = false; // biến cho biết: đã đến lúc chuyển sang hiển thị số tiếp theo trong dãy mã số hiện tại chưa ?
 
 char *ID = NULL; // con trỏ trỏ đến các ký tự trong chuỗi ký tự mã số sinh viên (gồm 8 chữ số và 1 ký tự kết thúc - '\0')
 
