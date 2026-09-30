@@ -103,7 +103,7 @@ void loop() {
   vẫn đọc được tín hiệu là "ĐƯỢC NHẤN" chỉ vì ta chưa thả tay (đó không phải là một lần bấm nút mới thực sự) -> Không xử lý.
   */
 
-  if ((millis() - start_checking_bounce_direction >= 50) && new_direction && start_checking_bounce_direction != 0)
+  if ((millis() - start_checking_bounce_direction >= 30) && new_direction && start_checking_bounce_direction != 0)
   {
     start_checking_bounce_direction = 0;
     
@@ -119,7 +119,7 @@ void loop() {
     start_checking_bounce_counter = millis();
   }
 
-  if ((millis() - start_checking_bounce_counter >= 50) && new_direction && start_checking_bounce_counter != 0)
+  if ((millis() - start_checking_bounce_counter >= 30) && new_counter && start_checking_bounce_counter != 0)s
   {
     start_checking_bounce_counter = 0;
     
