@@ -179,11 +179,14 @@ unsigned long start_timing_break = 0; // lưu thời gian chương trình đã c
 // hàm xử lý sự kiện nhấn nút
 void process_pressing_button()
 {
+  display_on_led(0);
+  start_timing_display_number = 0;
+  start_timing_display_hyphen = 0;
+
+  start_timing_break = millis();
+  
   index = (index + 1) % 3; // chuyển sang sinh viên kế tiếp
   ID = sv_arr[index].MSSV; // ID bây giờ trỏ tới ký tự đầu tiên (chữ số đầu tiên) trong chuỗi số thuộc MSSV của sinh viên đang xét
-
-  display_on_led(1);
-  start_timing_display_number = millis();
 }
 
 void loop() {
