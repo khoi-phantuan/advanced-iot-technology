@@ -42,6 +42,15 @@ void print_binary_value()
   }
 }
 
+// bật/tắt các đèn LED tương ứng với trạng thái của bit điều khiển nó trong dãy bit value
+void led_on()
+{
+  digitalWrite(LED_3, (value >> 3) | 1);
+  digitalWrite(LED_2, (value >> 3) | 1);
+  digitalWrite(LED_1, (value >> 3) | 1);
+  digitalWrite(LED_0, (value >> 3) | 1);
+}
+
 void loop() {
   bool new_counter = digitalRead(counter_button); // biến lưu trạng thái của việc "nút counter có bị bấm hay không?" ở lần loop này
   bool new_direction = digitalRead(direction_button); // biến lưu trạng thái của việc "nút direction có bị bấm hay không?" ở lần loop này
@@ -61,8 +70,10 @@ void loop() {
     else
       value--;
 
-    if (value > 15) // khi value chạm max, đưa về 0 theo yêu cầu
+    if (value > 15) // khi value hơn max, đưa về 0 theo yêu cầu
       value = 0;
+
+    led_on(); // điều chỉnh các đèn LED theo trạng thái tương ứng của value
 
     // in log ra màn hình Serial Monitor theo yêu cầu
     Serial.print("Current value: ");
