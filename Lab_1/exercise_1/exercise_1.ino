@@ -101,6 +101,8 @@ void loop() {
   dù vẫn đọc được tín hiệu nút direction là "ĐƯỢC NHẤN" cũng không thể thực thi được khối if này.
   - Vì như đã nói ở trên, trong khoảnh khắc ta nhấn nút thì chương trình đã chạy qua hàng ngàn vòng lặp. Rất có thể, những loop chạy sau đó 
   vẫn đọc được tín hiệu là "ĐƯỢC NHẤN" chỉ vì ta chưa thả tay (đó không phải là một lần bấm nút mới thực sự) -> Không xử lý.
+
+  Giải thuật này đòi hỏi người bấm cần giữ tay lâu một chút khi bấm nút (đừng nhấn-nhả quá nhanh trong dưới 30ms)
   */
 
   if ((millis() - start_checking_bounce_direction >= 30) && new_direction && start_checking_bounce_direction != 0)
@@ -119,7 +121,7 @@ void loop() {
     start_checking_bounce_counter = millis();
   }
 
-  if ((millis() - start_checking_bounce_counter >= 30) && new_counter && start_checking_bounce_counter != 0)s
+  if ((millis() - start_checking_bounce_counter >= 30) && new_counter && start_checking_bounce_counter != 0)
   {
     start_checking_bounce_counter = 0;
     
