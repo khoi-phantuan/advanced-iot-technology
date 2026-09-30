@@ -32,10 +32,19 @@ void loop() {
   bool new_counter = digitalRead(counter_button); // biến lưu trạng thái nhấn nút counter ở lần lặp này
   bool new_direction = digitalRead(direction_button); // biến lưu trạng thái nhấn nút direction ở lần lặp này
 
-  if (direction_counter && !direction_counter) // nếu trạng thái của nút counter ở lần lặp trước là "KHÔNG NHẤN" nhưng ở lần lặp này là "ĐƯỢC NHẤN"
+  if (direction_button && !last_direction) // nếu trạng thái của nút direction ở lần lặp trước là "KHÔNG NHẤN" nhưng ở lần lặp này là "ĐƯỢC NHẤN"...
   // (đồng nghĩa với việc đây là vòng lặp xuất hiện đầu tiên kể từ khi đọc được trạng thái của nút là "ĐƯỢC NHẤN")
   {
     direction != direction; // đảo chiều đếm
+  }
+
+  if (new_counter && !last_counter) // nếu trạng thái của nút counter ở lần lặp trước là "KHÔNG NHẤN" nhưng ở lần lặp này là "ĐƯỢC NHẤN"...
+  // (đồng nghĩa với việc đây là vòng lặp xuất hiện đầu tiên kể từ khi đọc được trạng thái của nút là "ĐƯỢC NHẤN")
+  {
+    if (direction)
+      value++;
+    else
+      value--;
   }
 
 }
