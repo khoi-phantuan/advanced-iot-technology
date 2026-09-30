@@ -172,6 +172,10 @@ void display_on_led(bool state)
   }
 }
 
+unsigned long start_timing_display_number = 0; // lưu thời gian chương trình đã chạy ngay khi bắt đầu hiển thị một chữ số trên LED
+unsigned long start_timing_display_hyphen = 0; // lưu thời gian chương trình đã chạy ngay khi bắt đầu hiển thị dấu gạch ngang trên LED
+unsigned long start_timing_break = 0; // lưu thời gian chương trình đã chạy ngay khi bắt đầu khoảng thời gian nghỉ
+
 // hàm xử lý sự kiện nhấn nút
 void process_pressing_button()
 {
@@ -179,6 +183,7 @@ void process_pressing_button()
   ID = sv_arr[index].MSSV; // ID bây giờ trỏ tới ký tự đầu tiên (chữ số đầu tiên) trong chuỗi số thuộc MSSV của sinh viên đang xét
 
   display_on_led(1);
+  start_timing_display_number = millis();
 }
 
 void loop() {
@@ -190,7 +195,7 @@ void loop() {
   }
 
   // nếu đã trôi qua 30ms kể từ mốc thời gian đó mà nút vẫn còn được nhấn...
-  if ((millis() - start_timing_button_bounce >= 30) && current_button && (start_timing_button != 0))
+  if ((millis() - start_timing_button_bounce >= 30) && current_button && (start_timing_button_bounce != 0))
   {
     start_timing_button_bounce = 0;
     
@@ -198,6 +203,34 @@ void loop() {
     process_pressing_button();
   }
 
-  last_button = current_button // cập nhật trạng thái nhấn nút hiện tại thành trạng thái nhấn nút mới nhất
+  if ((start_timing_break != 0) && (millis() - start_timing_break >= BREAK_TIME))
+  {
+    start_timing_break = 0;
+    display_on_led(1);
+
+    if (*ID != '\0')
+      start_timing_display_number = millis();
+    else
+      start_timing_display_hyphen = millis();
   }
+
+  if ((start_timing_display_number != 0) && (millis() - start_timing_display_number >= DISPLAY_NUMBER_TIME))
+  {
+    start_timing_display_number = 0;
+    display_on_led(0);
+
+    start_timing_break = millis();
+    ID++;
+  }
+
+  if ((start_timing_display_hyphen != 0) && (millis() - start_timing_display_hyphen >= DISPLAY_HYPHEN_TIME))
+  {
+    start_timing_display_hyphen = 0;
+    display_on_led(0);
+
+    start_timing_break = millis();
+    ID = sv_arr[index].MSSV;
+  }
+
+  last_button = current_button; // cập nhật trạng thái nhấn nút hiện tại thành trạng thái nhấn nút mới nhất
 }
