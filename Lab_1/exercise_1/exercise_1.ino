@@ -50,9 +50,9 @@ void print_binary_value()
 void led_on()
 {
   digitalWrite(LED_3, (value >> 3) | 1);
-  digitalWrite(LED_2, (value >> 3) | 1);
-  digitalWrite(LED_1, (value >> 3) | 1);
-  digitalWrite(LED_0, (value >> 3) | 1);
+  digitalWrite(LED_2, (value >> 2) | 1);
+  digitalWrite(LED_1, (value >> 1) | 1);
+  digitalWrite(LED_0, (value >> 0) | 1);
 }
 
 // in log ra màn hình Serial Monitor theo yêu cầu
