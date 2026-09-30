@@ -28,6 +28,8 @@ void setup() {
   // các chân này sẽ đọc trạng thái điện áp (cao/thấp) tại các nút bấm để biết nó có vừa được người dùng bấm không (có: mức cao ; không: mức thấp)
   pinMode(counter_button, INPUT);
   pinMode(direction_button, INPUT);
+
+  Serial.begin(115200); // bắt đầu giao tiếp serial ở tốc độ 115200 bit/s (để in log ra màn hình)
 }
 
 // sử dụng phép toán dịch bit để in từng bit của dãy bit ra màn hình (theo thứ tự từ MSB đến LSB)
