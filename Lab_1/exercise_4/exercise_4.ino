@@ -9,7 +9,17 @@ short LED_G = 7;  // chân D7 điều khiển đoạn LED G
 
 short BUTTON = 2; // khai báo biến ứng với chân D2 nhận thông tin từ nút bấm
 
+struct SinhVien
+{
+  char* HoTen;
+  char* MSSV;
+};
 
+SinhVien sv_arr[3] = {
+  {"Phan Tuan Khoi", "24520867"},
+  {"Nguyen Huynh Dang Khoa", "24520829"},
+  {"Huynh Mai Phong", "25521379"}
+};
 
 void setup() {
   // put your setup code here, to run once:
