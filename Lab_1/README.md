@@ -1,5 +1,9 @@
 # Lab 1 — Giới thiệu về Arduino
 
+*đang cập nhật*
+
+<!-->
+
 ## Mục tiêu lab
 Trong bài lab này, mình sẽ tìm hiểu về:
 - Các khái niệm cơ bản trong lập trình nhúng,
@@ -12,10 +16,17 @@ Trong bài lab này, mình sẽ tìm hiểu về:
 
 ## Môi trường / Công cụ
 - Arduino IDE
-<!--
+
 ## Mình đã làm gì?
 
 ## Khó khăn và cách giải quyết
+1. Bài 1:
+- Cắm mạch vật lý thấy value và LED nhảy loạn xạ, lúc không nhấn nút thì chuyển trạng thái, lúc nhấn nút thì không phản ứng gì, logic nút counter và direction lẫn lộn nhau,...  
+=> Do chưa nối phía còn lại của 2 nút bấm về GND của Arduino. 2 nút bấm chỉ đang có một phía được nối vào nguồn 5V, chưa có đường về GND -> loạn tín hiệu.
+2. Bài 2:
+- Phát hiện LED 7 đoạn mượn từ phòng lab là loại Anode chung - không phải Cathode chung như dự kiến.
+- Nạp code mạch không chạy, LED 7 đoạn không sáng  
+=> Nối dây nguồn chung còn thiếu.
 
 ## Mình đã học được gì?
 
