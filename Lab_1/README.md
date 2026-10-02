@@ -2,7 +2,7 @@
 
 *đang cập nhật*
 
-<!-->
+<!--
 
 ## Mục tiêu lab
 Trong bài lab này, mình sẽ tìm hiểu về:
