@@ -1,0 +1,16 @@
+# build artifacts
+build/
+*.elf
+*.hex
+*.bin
+
+# editor / local config
+.vscode/
+sketch.json
+
+# secrets
+secrets.h
+
+# OS junk
+Thumbs.db
+.DS_Store
