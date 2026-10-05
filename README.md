@@ -3,7 +3,7 @@
 ## Về repo này
 Đây là repo ghi lại quá trình thực hành của mình đối với môn **Công nghệ Internet of Things hiện đại** mà mình học ở HK1 năm học 2026-2027 (09/2026 - 12/2026). Mình sẽ cập nhật nội dung thực hành các bài lab dần dần theo đúng tiến độ môn học.
 
-Những bài thực hành mình làm ở đây đều đã được hướng dẫn bởi giảng viên với tài liệu có sẵn - không phải mình tự nghĩ ra. Tuy nhiên, trong quá trình thực hiện, mình sẽ cố gắng giải thích lại tất cả những gì mình đã làm theo cách dễ hiểu nhất có thể cho người đọc.
+Những bài thực hành mình làm ở đây đều đã được hướng dẫn bởi giảng viên với tài liệu có sẵn - không phải mình tự nghĩ ra. Tuy nhiên, trong quá trình thực hiện, mình sẽ cố gắng giải thích lại những gì mình đã làm theo cách dễ hiểu nhất có thể cho người đọc.
 
 **Trạng thái:** ⬜ Chưa thực hiện · 🟡 Đang thực hiện phần việc nhóm · 🔵 Xong phần việc nhóm, đang tự thực hành phần còn lại · ✅ Đã hoàn thành
 
