@@ -5,7 +5,7 @@
 
 Những bài thực hành mình làm ở đây đều đã được hướng dẫn bởi giảng viên với tài liệu có sẵn - không phải mình tự nghĩ ra. Tuy nhiên, trong quá trình thực hiện, mình sẽ cố gắng giải thích lại tất cả những gì mình đã làm theo cách dễ hiểu nhất có thể cho người đọc.
 
-**Trạng thái:** ⬜ Chưa thực hiện · 🟡 Đang làm phần việc được giao trong nhóm · 🔵 Xong phần việc nhóm, đang tự thực hành phần còn lại · ✅ Hoàn thành
+**Trạng thái:** ⬜ Chưa thực hiện · 🟡 Đang thực hiện phần việc nhóm · 🔵 Xong phần việc nhóm, đang tự thực hành phần còn lại · ✅ Đã hoàn thành
 
 ---
 
