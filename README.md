@@ -1,31 +1,30 @@
 # NT532 — Công nghệ Internet of Things hiện đại
 
-*An English version will be added soon!*
-
 ## Về repo này
-Đây là repo ghi lại quá trình thực hành của mình đối với môn **Công nghệ Internet of Things hiện đại** mà mình đã học vào HK1 năm học 2026-2027 (09/2026 - 12/2026). Mình sẽ cập nhật nội dung thực hiện các bài lab của mình thường xuyên theo đúng tiến độ môn học.  
+Đây là repo ghi lại quá trình thực hành của mình đối với môn **Công nghệ Internet of Things hiện đại** mà mình học ở HK1 năm học 2026-2027 (09/2026 - 12/2026). Mình sẽ cập nhật nội dung thực hành các bài lab dần dần theo đúng tiến độ môn học.
+
+Những bài thực hành mình làm ở đây đều đã được hướng dẫn bởi giảng viên với tài liệu có sẵn - không phải mình tự nghĩ ra. Tuy nhiên, trong quá trình thực hiện, mình sẽ cố gắng giải thích lại tất cả những gì mình đã làm theo cách dễ hiểu nhất có thể cho người đọc.
+
+**Trạng thái:** ⬜ Chưa thực hiện · 🟡 Đang làm phần việc được giao trong nhóm · 🔵 Xong phần việc nhóm, đang tự thực hành phần còn lại · ✅ Hoàn thành
 
 ---
 
 ## Danh sách lab
-- [ ] [Lab 1 — Giới thiệu về Arduino](Lab_1/) *(đang tiến hành)*
-- [ ] [Lab 2 — Arduino và cảm biến](Lab_2/)
-- [ ] [Lab 3 — HTTP/MQTT trong nền tảng IoT](Lab_3/)
-- [ ] [Lab 4 — Xây dựng một dashboard IoT đơn giản](Lab_4/)
-- [ ] [Lab 5 — Xây dựng một ứng dụng AI trong nền tảng IoT](Lab_5/)
-- [ ] [Lab 6 — Hoàn thành một giải pháp IoT](Lab_6/)
 
-*nội dung các lab sau sẽ được cập nhật theo thời gian...*
+- 🔵 [Lab 1 — Giới thiệu về Arduino](Lab_1/) *(21/09 - 05/10)*
+- 🟡 [Lab 2 — Arduino và cảm biến](Lab_2/)
+- ⬜ [Lab 3 — HTTP/MQTT trong nền tảng IoT](Lab_3/)
+- ⬜ [Lab 4 — Xây dựng một dashboard IoT đơn giản](Lab_4/)
+- ⬜ [Lab 5 — Xây dựng một ứng dụng AI trong nền tảng IoT](Lab_5/)
+- ⬜ [Lab 6 — Hoàn thành một giải pháp IoT](Lab_6/)
 
 ---
 
-## Cách mình làm repo này
-Những bài thực hành mà mình làm ở đây đều đã được hướng dẫn bởi giảng viên với tài liệu có sẵn - không phải do mình tự nghĩ ra. Tuy nhiên, trong quá trình thực hiện, mình sẽ luôn cố gắng giải thích tất cả những gì mình đã làm theo cách dễ hiểu, dễ tiếp cận nhất đối với người đọc - không phải chỉ là "làm cho có, cho xong bài". 
+## Môi trường & Công cụ
+- **Thiết bị**: Arduino Uno R3
+- **Môi trường**: Arduino IDE 2.3.10
 
-Mình đặt mục tiêu là phải thực sự hiểu thứ mình học và thứ mình làm. Kể cả khi được hướng dẫn thì cũng phải hiểu "tại sao nó là như vậy", chứ không phải "do người ta nói vậy nên nó là như vậy".
-
-## Ghi chú
-Repo này vẫn đang trong quá trình hoàn thiện, với các nội dung thực hành được cập nhật đều đặn theo thời gian khi mình học đến. 
+*(Sẽ bổ sung khi học đến các lab sau)*
 
 ---
 
