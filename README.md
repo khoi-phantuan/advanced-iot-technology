@@ -13,10 +13,10 @@ Những bài thực hành mình làm ở đây đều đã được hướng d�
 
 - 🔵 [Lab 1 — Giới thiệu về Arduino](Lab_1/) *(21/09 - 05/10)*
 - 🟡 [Lab 2 — Arduino và cảm biến](Lab_2/)
-- ⬜ [Lab 3 — HTTP/MQTT trong nền tảng IoT](Lab_3/)
-- ⬜ [Lab 4 — Xây dựng một dashboard IoT đơn giản](Lab_4/)
-- ⬜ [Lab 5 — Xây dựng một ứng dụng AI trong nền tảng IoT](Lab_5/)
-- ⬜ [Lab 6 — Hoàn thành một giải pháp IoT](Lab_6/)
+- ⬜ [Lab 3 — HTTP và MQTT trên nền tảng IoT](Lab_3/)
+- ⬜ [Lab 4 — Xây dựng bảng điều khiển IoT đơn giản](Lab_4/)
+- ⬜ [Lab 5 — Xây dựng ứng dụng AI trên nền tảng IoT](Lab_5/)
+- ⬜ [Lab 6 — Hoàn thiện giải pháp IoT](Lab_6/)
 
 ---
 

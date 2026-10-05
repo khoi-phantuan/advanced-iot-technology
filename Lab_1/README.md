@@ -8,18 +8,9 @@ Trong bài lab này, mình đã tìm hiểu về:
 - Nền tảng cơ bản về Arduino, bao gồm mạch phát triển, framework, môi trường/công cụ sử dụng, phong cách lập trình để tạo ra những ứng dụng IoT đơn giản đầu tiên,
 - Cách kết hợp bo mạch Arduino với một số linh kiện điện tử cơ bản như đèn LED, điện trở, breadboard, nút bấm,... để thực hiện thêm nhiều kịch bản ứng dụng IoT khác.
 
-## Môi trường & Linh kiện
-**Môi trường**
-- Arduino IDE 2.3.10
-
-**Linh kiện**
-- Arduino Uno R3  
-- LED 7 đoạn (loại Anode chung)
-- LED màu
-- Nút bấm
-- Điện trở
-- Dây jumper
-- Breadboard
+## Môi trường
+- **Arduino IDE 2.3.10**
+- Package: **Arduino AVR Boards 1.8.8**
 
 ---
 
@@ -28,7 +19,7 @@ Trong bài lab này, mình đã tìm hiểu về:
 ### Đề bài
 Xây dựng một mạch đếm số nhị phân 4 bit dùng 4 đèn LED và 2 nút bấm mà trong đó, trạng thái sáng/tắt của từng đèn sẽ đại diện cho giá trị 1/0 của từng bit. Một nút bấm có tác dụng tăng giá trị đếm thêm một đơn vị theo chiều đếm hiện tại, và nút bấm còn lại có tác dụng đảo chiều đếm đó. Khi đếm đến giá trị vượt quá 15 thì cho giá trị đếm quay về 0. Ngoài ra, cũng in log ra Serial Monitor mỗi khi giá trị thay đổi.
 
-### Linh kiện
+### Linh kiện sử dụng
 - 1 Arduino Uno R3
 - 4 LED đỏ
 - 2 nút bấm
@@ -38,10 +29,10 @@ Xây dựng một mạch đếm số nhị phân 4 bit dùng 4 đèn LED và 2 n
 - 11 dây jumper
 
 ### Mạch
-Mạch điện mô phỏng:
+- Mạch điện mô phỏng:
 ![Mạch điện mô phỏng](exercise_1/simulated_circuit.png)
 
-Mạch điện thực tế:
+- Mạch điện thực tế:
 ![Mạch điện thực tế](exercise_1/practical_circuit.jpg)
 
 ### Code
@@ -61,7 +52,7 @@ Xây dựng một kịch bản sao cho LED 7 đoạn có thể hiển thị lầ
 - Giữa 2 ký tự liên tiếp được hiển thị (chữ số, dấu gạch ngang) phải có một khoảng nghỉ ngắn,
 - Khi người dùng nhấn nút, mạch phải cho hiển thị mã số sinh viên mới ngay, không được có độ trễ.
 
-### Linh kiện
+### Linh kiện sử dụng
 - 1 Arduino Uno R3  
 - 1 LED 7 đoạn (loại Anode chung)
 - 1 nút bấm
@@ -71,10 +62,10 @@ Xây dựng một kịch bản sao cho LED 7 đoạn có thể hiển thị lầ
 - 2 breadboard
 
 ### Mạch
-Mạch điện mô phỏng:
+- Mạch điện mô phỏng:
 ![Mạch điện mô phỏng](exercise_4/simulated_circuit.png)
 
-Mạch điện thực tế:
+- Mạch điện thực tế:
 ![Mạch điện thực tế](exercise_4/practical_circuit.jpg)
 
 ### Code
