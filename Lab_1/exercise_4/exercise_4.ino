@@ -22,9 +22,9 @@ struct SinhVien
 
 // mảng sinh viên, gồm 3 sinh viên của nhóm cần hiển thị mã số lên LED 7 đoạn
 SinhVien sv_arr[3] = {
-  {"Phan Tuan Khoi", "24520867"},
-  {"Nguyen Huynh Dang Khoa", "24520829"},
-  {"Huynh Mai Phong", "25521379"}
+  {"Sinh vien A", "12345678"},
+  {"Sinh vien B", "87654321"},
+  {"Sinh vien C", "13572468"}
 };
 
 short sv_index = -1; // chỉ số của sinh viên đang được hiển thị mã số, giá trị từ 0 đến 2 (ban đầu chưa ai nhấn nút - chưa có SV nào để hiển thị mã số thì bằng -1)

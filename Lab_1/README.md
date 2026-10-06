@@ -3,10 +3,7 @@
 > README hiện tại chỉ gồm nội dung thực hiện bài 1 và bài 4 (phần việc mình được giao trong phần làm nhóm). Các bài còn lại sẽ được bổ sung sau khi mình tự thực hành.
 
 ## Mục tiêu lab
-Trong bài lab này, mình đã tìm hiểu về:
-- Các khái niệm cơ bản trong lập trình nhúng,
-- Nền tảng cơ bản về Arduino, bao gồm mạch phát triển, framework, môi trường/công cụ sử dụng, phong cách lập trình để tạo ra những ứng dụng IoT đơn giản đầu tiên,
-- Cách kết hợp bo mạch Arduino với một số linh kiện điện tử cơ bản như đèn LED, điện trở, breadboard, nút bấm,... để thực hiện thêm nhiều kịch bản ứng dụng IoT khác.
+Trong bài lab này, mình sẽ tìm hiểu cơ bản về nền tảng Arduino, bao gồm bo mạch, môi trường lập trình và phương pháp lập trình nhúng đơn giản sử dụng các hàm và thư viện có sẵn. Sau đó ứng dụng bo mạch này vào để xây dựng các kịch bản theo yêu cầu.
 
 ## Môi trường
 - **Arduino IDE 2.3.10**
@@ -17,7 +14,7 @@ Trong bài lab này, mình đã tìm hiểu về:
 ## Bài 1: Bộ đếm nhị phân 4 bit
 
 ### Đề bài
-Xây dựng một mạch đếm số nhị phân 4 bit dùng 4 đèn LED và 2 nút bấm mà trong đó, trạng thái sáng/tắt của từng đèn sẽ đại diện cho giá trị 1/0 của từng bit. Một nút bấm có tác dụng tăng giá trị đếm thêm một đơn vị theo chiều đếm hiện tại, và nút bấm còn lại có tác dụng đảo chiều đếm đó. Khi đếm đến giá trị vượt quá 15 thì cho giá trị đếm quay về 0. Ngoài ra, cũng in log ra Serial Monitor mỗi khi giá trị thay đổi.
+Xây dựng một chương trình đếm số nhị phân 4 bit lên/xuống - thể hiện qua trạng thái sáng/tắt của các đèn LED. Dùng 2 nút bấm: 1 nút đếm sang giá trị tiếp theo - 1 nút đảo chiều đếm hiện tại.
 
 ### Linh kiện sử dụng
 - 1 Arduino Uno R3
@@ -48,9 +45,7 @@ Xây dựng một mạch đếm số nhị phân 4 bit dùng 4 đèn LED và 2 n
 ## Bài 4: Mã số sinh viên của nhóm là gì?
 
 ### Đề bài
-Xây dựng một kịch bản sao cho LED 7 đoạn có thể hiển thị lần lượt từng chữ số trong mã số sinh viên của các thành viên nhóm trong một khoảng thời gian. Tại mỗi thời điểm, chỉ có một MSSV được hiển thị lặp đi lặp lại, ngăn cách bởi một dấu gạch ngang khi kết thúc mã số. Khi người dùng nhấn nút, mạch lập tức chuyển sang hiển thị mã số của sinh viên kế tiếp, đồng thời in log ra Serial Monitor. Lưu ý quan trọng:
-- Giữa 2 ký tự liên tiếp được hiển thị (chữ số, dấu gạch ngang) phải có một khoảng nghỉ ngắn,
-- Khi người dùng nhấn nút, mạch phải cho hiển thị mã số sinh viên mới ngay, không được có độ trễ.
+Xây dựng một chương trình hiển thị các chữ số trong mã số sinh viên của các thành viên nhóm lên LED 7 đoạn. Dùng 1 nút bấm: nhấn nút thì chuyển sang hiển thị chuỗi số trong MSSV thành viên kế tiếp — **việc chuyển đổi này phải có hiệu lực ngay lập tức!**
 
 ### Linh kiện sử dụng
 - 1 Arduino Uno R3  
@@ -72,10 +67,31 @@ Xây dựng một kịch bản sao cho LED 7 đoạn có thể hiển thị lầ
 [Source code](exercise_4/exercise_4.ino)
 
 ### Khó khăn và cách giải quyết
-| Hiện tượng | Nguyên nhân | Cách phát hiện | Cách xử lý |
-|-------|-------|-------|---|
-| Cắm chân chung của LED 7 đoạn vào chân GND Arduino và chập chân nguồn của Arduino vào từng chân điều khiển các đoạn LED thì không có đoạn nào sáng. | LED 7 đoạn mượn từ lab là loại Anode chung, không phải Cathode chung như loại đã dùng để mô phỏng trước đó. | Tìm thông tin về cách hoạt động của linh kiện LED 7 đoạn. | Sửa code lại để khớp logic: muốn bật đèn thì xuất điện áp thấp - muốn tắt đèn thì xuất điện áp cao. |
-| Nạp code vào mạch điện thực tế thấy các đoạn LED không sáng như kì vọng - nhấn nút không hiển thị mã số nào. | Chưa nối dây nguồn chung vào nguồn 5V của Arduino. | Nhìn hành vi của LED 7 đoạn trong mạch thực tế. | Nối dây nguồn chung còn thiếu. |
+
+<table>
+  <thead>
+    <tr>
+      <th>Hiện tượng</th>
+      <th>Nguyên nhân</th>
+      <th>Cách phát hiện</th>
+      <th>Cách xử lý</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">Nạp code vào mạch điện thực tế thấy các đoạn LED không sáng như kì vọng - nhấn nút không hiển thị mã số nào.</td>
+      <td>LED 7 đoạn mượn từ lab là loại Anode chung, không phải Cathode chung như loại đã dùng để mô phỏng trước đó.</td>
+      <td>Cắm chân chung của LED 7 đoạn vào chân GND Arduino và cho chân nguồn của Arduino chạm vào từng chân điều khiển các đoạn LED thì không có đoạn nào sáng.</td>
+      <td>Sửa code lại để khớp logic: muốn bật đèn thì xuất điện áp thấp - muốn tắt đèn thì xuất điện áp cao.</td>
+    </tr>
+    <tr>
+      <td>Chưa nối chân Common của LED 7 đoạn vào chân nguồn 5V của Arduino.</td>
+      <td>Nhìn hành vi của LED 7 đoạn trong mạch thực tế.</td>
+      <td>Nối đoạn dây còn thiếu đó.</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ---
 
