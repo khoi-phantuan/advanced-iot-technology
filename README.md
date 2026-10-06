@@ -23,6 +23,7 @@ Những bài thực hành mình làm ở đây đều đã được hướng d�
 ## Môi trường & Công cụ
 - **Thiết bị**: Arduino Uno R3
 - **Môi trường**: Arduino IDE 2.3.10
+- **Mô phỏng**: Tinkercad
 
 *(Sẽ bổ sung khi học đến các lab sau)*
 

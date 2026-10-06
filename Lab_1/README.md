@@ -3,11 +3,12 @@
 > README hiện tại chỉ gồm nội dung thực hiện bài 1 và bài 4 (phần việc mình được giao trong phần làm nhóm). Các bài còn lại sẽ được bổ sung sau khi mình tự thực hành.
 
 ## Mục tiêu lab
-Trong bài lab này, mình sẽ tìm hiểu cơ bản về nền tảng Arduino, bao gồm bo mạch, môi trường lập trình và phương pháp lập trình nhúng đơn giản sử dụng các hàm và thư viện có sẵn. Sau đó ứng dụng bo mạch này vào để xây dựng các kịch bản theo yêu cầu.
+Trong bài lab này, mình đã tìm hiểu cơ bản về nền tảng Arduino, bao gồm bo mạch, môi trường lập trình và cách lập trình nhúng đơn giản sử dụng hàm và thư viện có sẵn (trừu tượng). Sau đó ứng dụng bo mạch này vào để xây dựng các kịch bản theo yêu cầu.
 
-## Môi trường
-- **Arduino IDE 2.3.10**
-- Package: **Arduino AVR Boards 1.8.8**
+## Công cụ
+- **IDE:** Arduino IDE 2.3.10
+  - **Package**: Arduino AVR Boards 1.8.8
+- **Mô phỏng**: Tinkercad
 
 ---
 
@@ -97,9 +98,9 @@ Xây dựng một chương trình hiển thị các chữ số trong mã số si
 
 ## Mình đã học được gì?
 - Tranh thủ thời gian mô phỏng hoạt động của mạch ở nhà bằng phần mềm trước khi lên lab mượn thiết bị để cắm mạch thực tế.
-- Tập thói quen sử dụng hàm `millis()` và một biến ghi lại mốc thời gian để tính giờ kích hoạt sự kiện, thay vì dùng `delay()` - một blocking function.
+- Tập thói quen sử dụng hàm `millis()` và một biến ghi lại mốc thời gian để tính giờ kích hoạt sự kiện, thay vì dùng `delay()` - một blocking function ("đóng băng" toàn bộ chương trình).
 - Khi làm việc với nút bấm thì rất nên có logic chống nhiễu:
   - Nhiễu nút bấm là hiện tượng: Vì đặc tính cơ học, khi ta nhấn nút thật, hai lá kim loại bên trong nút chạm nhau rồi nảy lên nảy xuống liên tục trong vài mili giây trước khi ổn định. Và Arduino đọc được tín hiệu này thì lại "nghĩ" là người dùng nhấn nút nhiều lần liên tục.
   - Chống nhiễu là việc ta đợi khoảng vài chục ms cho tín hiệu tại nút bấm ổn định rồi mới xử lý.
-- Tư duy lập trình kiểu máy trạng thái (state machine) *(dù mình không chủ động nhận ra điều đó khi thiết kế chương trình)*.
-- Tự cắm mạch đơn giản để kiểm tra LED 7 đoạn là loại Anode chung hay Cathode chung trước khi dùng, tránh mất thời gian debug oan khi mạch không hoạt động như ý sau đó.
+- Bài 4: Tư duy lập trình kiểu máy trạng thái (state machine) *(dù mình không chủ động nhận ra điều đó khi thiết kế chương trình)*.
+- Bài 4: Tự cắm mạch đơn giản để kiểm tra LED 7 đoạn là loại Anode chung hay Cathode chung trước khi dùng, tránh mất thời gian debug oan khi mạch không hoạt động như ý sau đó.

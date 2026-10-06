@@ -9,9 +9,10 @@
 ## Mục tiêu lab
 1-2 câu, lời của mình: lab này làm quen/làm cái gì
 
-## Môi trường
-- **Arduino IDE 2.3.10**
-- Package: **Arduino AVR Boards 1.8.8**
+## Công cụ
+- **IDE:** Arduino IDE 2.3.10
+  - **Package**: Arduino AVR Boards 1.8.8
+- **Mô phỏng**: Tinkercad
 
 ---
 
