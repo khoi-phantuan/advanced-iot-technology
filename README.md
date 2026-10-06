@@ -1,11 +1,17 @@
 # NT532 — Công nghệ Internet of Things hiện đại
 
+> 👉 Mình là Khôi, sinh viên ngành Kỹ thuật máy tính tại UIT. Xem thêm về mình tại [GitHub Profile](https://github.com/khoi-phantuan).
+
 ## Về repo này
-Đây là repo ghi lại quá trình thực hành của mình đối với môn **Công nghệ Internet of Things hiện đại** mà mình học ở HK1 năm học 2026-2027 (09/2026 - 12/2026). Mình sẽ cập nhật nội dung thực hành các bài lab dần dần theo đúng tiến độ môn học.
+Đây là repo ghi lại quá trình thực hành của mình đối với môn **Công nghệ Internet of Things hiện đại** mà mình học ở HK1 năm học 2026-2027 (09/2026 - 12/2026), kèm phần giải thích về những gì đã làm theo cách mình hiểu.
 
-Những bài thực hành mình làm ở đây đều đã được hướng dẫn bởi giảng viên với tài liệu có sẵn - không phải mình tự nghĩ ra. Tuy nhiên, trong quá trình thực hiện, mình sẽ cố gắng giải thích lại những gì mình đã làm theo cách dễ hiểu nhất có thể cho người đọc.
+Đối với phần thực hành của môn học này, mình sẽ thực hiện theo nhóm 3 người. Chúng mình chia đều mỗi bài lab ra thành 3 phần để các thành viên thực hiện cá nhân trước, sau đó gộp kết quả lại, tổng kết và nộp báo cáo.  
 
-**Trạng thái:** ⬜ Chưa thực hiện · 🟡 Đang thực hiện phần việc nhóm · 🔵 Xong phần việc nhóm, đang tự thực hành phần còn lại · ✅ Đã hoàn thành
+> Với mong muốn hiểu bài thật kĩ, mình sẽ hoàn thành phần việc được giao trong khâu làm nhóm để kịp tiến độ nộp bài trước, rồi sau đó sắp xếp thời gian để tự thực hiện luôn các phần còn lại (vốn được đảm nhận bởi 2 thành viên kia).
+
+Mình làm các bài thực hành này theo tài liệu hướng dẫn của giảng viên, sẽ cập nhật nội dung dần theo đúng tiến độ môn học.
+
+**Trạng thái:** ⬜ Chưa thực hiện · 🟡 Đang thực hiện phần việc được giao · 🔵 Xong phần được giao, đang tự thực hiện phần còn lại · ✅ Đã hoàn thành
 
 ---
 
@@ -25,8 +31,4 @@ Những bài thực hành mình làm ở đây đều đã được hướng d�
 - **Môi trường**: Arduino IDE 2.3.10
 - **Mô phỏng**: Tinkercad
 
-*(Sẽ bổ sung khi học đến các lab sau)*
-
----
-
-👉 Xem thêm về mình tại [GitHub Profile](https://github.com/khoi-phantuan)
+*(sẽ bổ sung thêm khi học đến các lab sau, nếu cần)*
