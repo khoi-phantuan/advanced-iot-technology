@@ -36,6 +36,16 @@ Xây dựng một chương trình đếm số nhị phân 4 bit lên/xuống - t
 ### Code
 [Source code](exercise_1/exercise_1.ino)
 
+### Cách hoạt động
+- Giá trị đang đếm tới sẽ được lưu trong biến `value` (từ 0 đến 15). Trạng thái của mỗi LED sẽ đại diện cho trạng thái của một bit của `value` (tắt là 0, sáng là 1 - theo thứ tự từ MSB tới LSB là từ LED ngoài cùng bên trái sang LED ngoài cùng bên phải).
+- Lấy ra giá trị của bit i bằng cách dịch phải `value` i bit rồi AND với 1: `(value >> i) & 1`.
+- Hai nút dùng chung một cơ chế chống nhiễu: 
+  - Khi phát hiện nút chuyển từ "không nhấn" sang "được nhấn" thì ghi lại mốc thời gian bằng cách gọi hàm `millis()` và lưu kết quả trả về vào biến tính giờ. 
+  - Chỉ sau khi 30ms trôi qua mà nút vẫn còn đang được nhấn thì chương trình mới coi đó là một lần nhấn thật, và đặt biến tính giờ về 0, để kể cả khi người dùng giữ nút sau khi nhấn thì chương trình cũng xem đó chỉ là 1 lần nhấn thật, và chỉ kích hoạt 1 lần khối xử lý sự kiện nhấn nút này.
+  - **Hạn chế:** Với cách làm này, chương trình cũng sẽ bỏ qua luôn cả trường hợp người dùng nhấn - nhả nhanh đến mức toàn bộ quá trình diễn ra chỉ trong dưới 30ms. Tức là nhấn - nhả quá nhanh thì chưa đủ "thật" để xử lý.
+- Nút direction sẽ đảo giá trị biến `direction` (đếm lên/xuống). Còn nút counter sẽ tăng hoặc giảm `value` theo chiều đếm hiện tại rồi cập nhật trạng thái sáng/tắt tương ứng cho các LED và in log ra Serial Monitor.
+- Đếm lên vượt 15 thì quay về 0. Đếm xuống khi đang là 0 thì giữ nguyên 0 (không quay vòng về 15 - đây là chi tiết được thêm cá nhân, đề không yêu cầu), để tránh `value` trở thành số âm.
+
 ### Khó khăn và cách giải quyết
 | Hiện tượng | Nguyên nhân | Cách phát hiện | Cách xử lý |
 |----------|----------|----------|---|
@@ -66,6 +76,29 @@ Xây dựng một chương trình hiển thị các chữ số trong mã số si
 
 ### Code
 [Source code](exercise_4/exercise_4.ino)
+
+### Cách hoạt động
+Chương trình không dùng `delay()`. Chương trình sẽ có 3 giai đoạn chạy sự kiện khác nhau tương ứng với 3 trạng thái:
+- NGHỈ,
+- HIỆN CHỮ SỐ,
+- HIỆN DẤU GẠCH.
+
+Trong mỗi giai đoạn, sẽ có một biến lưu mốc thời gian mà `millis()` trả về lúc nó bắt đầu (bằng 0 nghĩa là giai đoạn đó đang không diễn ra), và hàm `loop()` sẽ liên tục so sánh mốc thời gian đó với mốc thời gian hiện tại (kết quả `millis()` trong mỗi lần loop) để xem độ chênh lệch đã vượt quá thời gian duy trì của giai đoạn đó chưa (đã đến lúc chuyển sang giai đoạn tiếp theo chưa). Với mỗi MSSV, các giai đoạn sẽ nối tiếp nhau và lặp lại cho đến khi nhấn nút:
+
+| Giai đoạn | Thời gian | Khi hết thời gian duy trì giai đoạn này |
+|---|---|---|
+| Nghỉ | 150ms | Bật LED hiển thị ký tự đang trỏ tới (chữ số, hoặc dấu gạch ngang nếu đã hết MSSV) |
+| Hiện chữ số | 600ms | Tắt LED, sang giai đoạn nghỉ, trỏ sang chữ số kế tiếp |
+| Hiện dấu gạch ngang | 1000ms | Tắt LED, sang giai đoạn nghỉ, trỏ về chữ số đầu của chính MSSV đó |
+
+**Khi nhấn nút:**
+1. Chống nhiễu: ghi lại mốc thời gian lúc trạng thái của nút vừa chuyển sang "được nhấn"; chỉ khi 30ms sau nút vẫn đang nhấn thì mới xử lý logic tương ứng, rồi đặt biến tính giờ về lại 0 để không xử lý trùng lặp khi người dùng nhấn rồi giữ (tương tự bài 1).
+2. Xử lý: tắt LED đang sáng, hủy các mốc thời gian đang chạy, chuyển sang sinh viên kế tiếp (0 → 1 → 2 → 0), trỏ về chữ số đầu MSSV mới và bắt đầu từ giai đoạn nghỉ.
+3. Vì chương trình không có chỗ nào bị "đứng chờ", nút được đọc liên tục. Nhờ vậy lần nhấn có hiệu lực ngay (chỉ trễ 30ms do chống nhiễu), kể cả khi đang hiển thị giữa chừng một chữ số.
+
+Ba biến tính giờ (lưu mốc thời gian khi chương trình bắt đầu đi vào trạng thái tương ứng) ở trên thực chất là cách thiết kế của một máy trạng thái: Biến nào khác 0 thì chương trình đang ở giai đoạn tương ứng.
+
+Trước khi nhấn nút lần đầu thì cả ba biến đều bằng 0, nên LED sẽ tắt (vì chương trình không đi vào được khối xử lý trạng thái nào cả).
 
 ### Khó khăn và cách giải quyết
 
